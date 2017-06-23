@@ -1,0 +1,75 @@
+name: psychopy
+channels:
+- cogsci
+- conda-forge
+- defaults
+dependencies:
+- pygame=1.9.2a0=py27_0
+- pyglet=1.2.4=py27_0
+- bzip2=1.0.6=vc9_3
+- cffi=1.10.0=py27_0
+- configobj=5.0.6=py27_0
+- cycler=0.10.0=py27_0
+- et_xmlfile=1.0.1=py27_0
+- freetype=2.5.5=vc9_2
+- functools32=3.2.3.2=py27_0
+- gevent=1.2.2=py27_0
+- greenlet=0.4.12=py27_0
+- hdf5=1.8.17=vc9_0
+- icu=57.1=vc9_0
+- jdcal=1.3=py27_0
+- jpeg=9b=vc9_0
+- libpng=1.6.27=vc9_0
+- libtiff=4.0.6=vc9_3
+- lxml=3.8.0=py27_0
+- matplotlib=2.0.2=np111py27_0
+- mkl=2017.0.1=0
+- msgpack-python=0.4.8=py27_0
+- numexpr=2.6.2=np111py27_0
+- numpy=1.11.3=py27_0
+- olefile=0.44=py27_0
+- openpyxl=2.4.7=py27_0
+- openssl=1.0.2l=vc9_0
+- pandas=0.20.1=np111py27_0
+- pillow=4.1.1=py27_0
+- pip=9.0.1=py27_1
+- psutil=5.2.2=py27_0
+- pycparser=2.17=py27_0
+- pyopengl=3.1.1a1=np111py27_0
+- pyparsing=2.1.4=py27_0
+- pyqt=5.6.0=py27_2
+- pytables=3.3.0=np111py27_0
+- python=2.7.13=1
+- python-dateutil=2.6.0=py27_0
+- pytz=2017.2=py27_0
+- pyyaml=3.12=py27_0
+- qt=5.6.2=vc9_4
+- requests=2.14.2=py27_0
+- scipy=0.19.0=np111py27_0
+- seaborn=0.7.1=py27_0
+- setuptools=27.2.0=py27_1
+- sip=4.18=py27_0
+- six=1.10.0=py27_0
+- subprocess32=3.2.7=py27_0
+- tk=8.5.18=vc9_0
+- vs2008_runtime=9.00.30729.5054=0
+- wheel=0.29.0=py27_0
+- wxpython=3.0=py27_0
+- xlrd=1.0.0=py27_0
+- zlib=1.2.8=vc9_3
+- pip:
+  - backports.shutil-get-terminal-size==1.0.0
+  - decorator==4.0.11
+  - et-xmlfile==1.0.1
+  - imageio==2.1.2
+  - moviepy==0.2.3.2
+  - prompt-toolkit==1.0.14
+  - psychopy==1.84.2
+  - psychopy-ext==0.6.0.4
+  - pyosf==1.0.5
+  - pysoundcard==0.5.2
+  - pysoundfile==0.9.0.post1
+  - python-bidi==0.4.0
+  - tables==3.3.0
+  - tqdm==4.11.2
+  - wcwidth==0.1.7
