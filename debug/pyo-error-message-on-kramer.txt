@@ -1,0 +1,6 @@
+c:\Users\LupyanLab\lab-computer\psychopy-tests>python test_psychopy_sound.py
+pyo version 0.8.0 (uses single precision)
+Assertion failed: info, file src/engine\ad_portaudio.c, line 538
+
+This application has requested the Runtime to terminate it in an unusual way.
+Please contact the application's support team for more information.
