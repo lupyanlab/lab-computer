@@ -22,7 +22,7 @@ To check if ansible can connect to the testing computers, run the following
 ad hoc command.
 
 ```bash
-ansible complab -i hosts -m ping
+ansible complab -i hosts -m ping -k  # prompts for SSH password
 ```
 
 ## Configure with ansible
@@ -32,5 +32,6 @@ After this playbook is run, ansible will connect with an SSH key,
 and not a password.
 
 ```bash
-ansible-playbook configure-ubuntu.yml -i hosts -kK
+ansible-playbook configure-ubuntu.yml -i hosts -kK  # prompt for SSH and sudo passwords
+ansible-playbook configure-ubuntu.yml -i hosts -K   # only prompt for sudo password
 ```
