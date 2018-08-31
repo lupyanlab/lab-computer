@@ -27,7 +27,7 @@ if prefs.general['audioLib'][0] == 'pyo':
     sound.init(48000,buffer=128)
 print 'Using %s(with %s) for sounds' %(sound.audioLib, sound.audioDriver)
 
-dogSound = sound.Sound('dog-label.wav')
+dogSound = sound.Sound('sounds/dog-label.wav')
 highA = sound.Sound('A',octave=3, sampleRate=44100, secs=1.0, bits=24)
 tick = sound.Sound('300',secs=0.01,sampleRate=44100, bits=24)
 tock = sound.Sound('3500',secs=0.01, sampleRate=44100, bits=24)
