@@ -1,4 +1,6 @@
 ---
+# Configure a fresh install of Ubuntu
+# - Enables the ufw firewall to only allow SSH connections with keys
 - hosts: complab
   become: yes
   vars:
