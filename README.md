@@ -1,6 +1,6 @@
-# Setting up a computer to run psychopy experiments
+# Setting up a computer to run behavioral experiments
 
-This repo contains information and instructions for running cognitive psychology experiments on macOS and Windows computers.
+This repo contains information and instructions for running cognitive psychology experiments on macOS, Windows, and Linux computers.
 
 ## Download this repo
 
