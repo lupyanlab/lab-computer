@@ -1,0 +1,64 @@
+---
+# Configure a fresh install of Ubuntu
+# - Enables the ufw firewall to only allow SSH connections with keys
+- hosts: complab
+  become: yes
+  vars:
+    sshd_config: /etc/ssh/sshd_config
+    ssh_pub_key: ~/.ssh/id_rsa.pub
+  tasks:
+      - name: Reset ufw to default settings
+        ufw: state=reset
+
+      - name: Enable ufw and allow ssh traffic
+        ufw: state=enabled rule=allow name=OpenSSH
+
+      - name: Update and upgrade apt packages
+        apt: update_cache=yes upgrade=safe
+
+      - name: Harden server with common packages
+        apt: state=present name={{ item }}
+        with_items:
+          - fail2ban
+
+      - name: Add ssh identity to authorized keys
+        authorized_key:
+          user: lupyanlab
+          key: "{{ lookup('file', ssh_pub_key) }}"
+          exclusive: yes
+
+      - name: Disable password login
+        lineinfile:
+          dest: "{{ sshd_config }}"
+          regexp: "^#?PasswordAuthentication "
+          line: "PasswordAuthentication no"
+
+      - name: Allow lupyanlab to sudo without password
+        template:
+          src: sudoers-without-password.j2
+          dest: /etc/sudoers.d/sudoers-without-password
+          mode: 0440
+          validate: 'visudo -cf %s'
+
+      - name: Install common packages
+        apt: state=present name={{ item }}
+        with_items:
+          - git
+          - vim
+          - python3-pip
+
+      - name: Install python packages
+        pip: name={{ item }}
+        with_items:
+          - pipenv
+
+      - name: Set git config
+        git_config:
+          name: "{{ item.name }}"
+          scope: global
+          value: "{{ item.value }}"
+        with_items:
+          - { name: "user.name", value: "Pierce Edmiston" }
+          - { name: "user.email", value: "pierce.edmiston@gmail.com" }
+          - { name: "core.editor", value: "vim" }
+        become_user: lupyanlab

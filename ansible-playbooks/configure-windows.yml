@@ -1,0 +1,17 @@
+---
+# Usage: ansible-playbook configure-windows.yml
+- name: Install required programs on Windows
+  host: localhost
+  become: yes
+  tasks:
+      # Module docs: http://docs.ansible.com/ansible/latest/win_chocolatey_module.html
+      # For more packages: https://chocolatey.org/packages
+    - name: Install programs with the chocolatey package manager
+      win_chocolatey:
+        - name: "{{ item }}"
+      with_items:
+        - dropbox
+        - GoogleChrome
+        - notepadplusplus
+        - OpenOffice
+        - git
