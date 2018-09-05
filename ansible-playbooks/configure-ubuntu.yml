@@ -33,11 +33,24 @@
           regexp: "^#?PasswordAuthentication "
           line: "PasswordAuthentication no"
 
+      - name: Allow lupyanlab to sudo without password
+        template:
+          src: sudoers-without-password.j2
+          dest: /etc/sudoers.d/sudoers-without-password
+          mode: 0440
+          validate: 'visudo -cf %s'
+
       - name: Install common packages
         apt: state=present name={{ item }}
         with_items:
           - git
           - vim
+          - python3-pip
+
+      - name: Install python packages
+        pip: name={{ item }}
+        with_items:
+          - pipenv
 
       - name: Set git config
         git_config:
