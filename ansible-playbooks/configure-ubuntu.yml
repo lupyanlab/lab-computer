@@ -19,7 +19,7 @@
       - name: Harden server with common packages
         apt: state=present name={{ item }}
         with_items:
-            - fail2ban
+          - fail2ban
 
       - name: Add ssh identity to authorized keys
         authorized_key:
@@ -32,3 +32,20 @@
           dest: "{{ sshd_config }}"
           regexp: "^#?PasswordAuthentication "
           line: "PasswordAuthentication no"
+
+      - name: Install common packages
+        apt: state=present name={{ item }}
+        with_items:
+          - git
+          - vim
+
+      - name: Set git config
+        git_config:
+          name: "{{ item.name }}"
+          scope: global
+          value: "{{ item.value }}"
+        with_items:
+          - { name: "user.name", value: "Pierce Edmiston" }
+          - { name: "user.email", value: "pierce.edmiston@gmail.com" }
+          - { name: "core.editor", value: "vim" }
+        become_user: lupyanlab
