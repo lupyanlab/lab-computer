@@ -1,15 +1,15 @@
 ---
-# Configure a fresh install of Ubuntu
-# - Enables the ufw firewall to only allow SSH connections with keys
+# Configure a fresh install of Ubuntu 18.04
 - hosts: complab
   become: yes
+  become_user: lupyanlab
   vars:
     sshd_config: /etc/ssh/sshd_config
     ssh_pub_key: ~/.ssh/id_rsa.pub
   tasks:
+      # Enable the ufw firewall to only allow SSH connections
       - name: Reset ufw to default settings
         ufw: state=reset
-
       - name: Enable ufw and allow ssh traffic
         ufw: state=enabled rule=allow name=OpenSSH
 
@@ -40,14 +40,14 @@
           mode: 0440
           validate: 'visudo -cf %s'
 
-      - name: Install common packages
+      - name: Install global programs
         apt: state=present name={{ item }}
         with_items:
           - git
           - vim
           - python3-pip
 
-      - name: Install python packages
+      - name: Install global python packages
         pip: name={{ item }}
         with_items:
           - pipenv
@@ -61,4 +61,4 @@
           - { name: "user.name", value: "Pierce Edmiston" }
           - { name: "user.email", value: "pierce.edmiston@gmail.com" }
           - { name: "core.editor", value: "vim" }
-        become_user: lupyanlab
+
