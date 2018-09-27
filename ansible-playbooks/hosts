@@ -1,6 +1,0 @@
-[complab]
-128.104.130.34
-
-[complab:vars]
-ansible_user=lupyanlab
-ansible_python_interpreter="/usr/bin/env python3"
